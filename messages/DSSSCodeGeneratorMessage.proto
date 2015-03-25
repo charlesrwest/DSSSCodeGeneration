@@ -1,0 +1,10 @@
+
+
+//This message has all the information associated with a pair of optimal codes for DSSS based communication, including the fitness of the pair.  It is used to store results and checkpoint so that new codes can be compared.
+
+message DSSSCodeGeneratorMessage
+{
+required bytes OptimalCodeCandidate0 = 1;
+required bytes OptimalCodeCandidate1 = 2;
+required uint64 fitness = 3;
+}
