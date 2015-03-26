@@ -1,4 +1,4 @@
-This is a very simple program which searches for pairs of even sequences with equal numbers of -1s and 1s that have small sidelobs.  It does this by randomly generating pairs test testing their maximum self and cross sums (excluding perfect self alignment, since that is always equal to the length of the sequence and when it is suppose to be high).
+This is a very simple program which searches for pairs of even sequences with equal numbers of -1s and 1s that have small sidelobs.  It does this by randomly generating pairs test testing their maximum self and cross sums (excluding perfect self alignment, since that is always equal to the length of the sequence and when it is suppose to be high).  It also supports checkpointing so that the process can crash and be restarted without any progress being lost.
 
 These codes should have nice noise suppression characteristics, which will be explored soon in an IR communication project.
 
