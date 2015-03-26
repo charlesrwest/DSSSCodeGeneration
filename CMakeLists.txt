@@ -10,8 +10,6 @@ find_package(Protobuf REQUIRED)
 #set path to library
 link_directories(/usr/lib/x86_64-linux-gnu)
 
-#Set the binaries to be placed in the ./bin/ directory
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "bin/")
 
 #Generate the C++ for the messages from the libprotobuf markup
 add_subdirectory(./messages)
@@ -24,11 +22,4 @@ link_directories(./messages)
 #Tell cmake were to find the sub-projects
 add_subdirectory(./src)
 
-FILE(GLOB DSSCodeGeneratorSource ./src/*.cpp)
-
-#Add the compilation target
-ADD_EXECUTABLE(DSSSCodeGenerator ${DSSCodeGeneratorSource})
-
-#link libraries to executable
-target_link_libraries(DSSSCodeGenerator  ${PROTOBUF_LIBRARY} messages.a)
 

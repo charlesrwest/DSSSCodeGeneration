@@ -1,21 +1,10 @@
-cmake_minimum_required (VERSION 2.8.3)
-PROJECT(DSSSCodeGenerator)
+ #Set the binaries to be placed in the ./bin/ directory
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin/")
 
-#Get c++11
-#ADD_DEFINITIONS(
-#    -std=c++11
-#)
+FILE(GLOB DSSCodeGeneratorSource ./*.cpp)
 
-#set path to library
-#link_directories(/usr/lib/x86_64-linux-gnu)
+#Add the compilation target
+ADD_EXECUTABLE(DSSSCodeGenerator ${DSSCodeGeneratorSource})
 
-#link_libraries(pthread)
-
-#FILE(GLOB SOURCEFILES *.cpp)
-
-#message( SOURCEFILES )
-
-
-
-
-
+#link libraries to executable
+target_link_libraries(DSSSCodeGenerator  ${PROTOBUF_LIBRARY} messages.a)

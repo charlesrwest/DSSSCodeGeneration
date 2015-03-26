@@ -4,7 +4,7 @@
 
 message DSSSCodeGeneratorMessage
 {
-required bytes OptimalCodeCandidate0 = 1;
-required bytes OptimalCodeCandidate1 = 2;
-required uint64 fitness = 3;
+repeated int32 optimal_code_candidate0 = 1;
+repeated int32 optimal_code_candidate1 = 2;
+required uint64 cost = 3;
 }
