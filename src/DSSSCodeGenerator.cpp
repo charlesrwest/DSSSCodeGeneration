@@ -57,7 +57,7 @@ std::copy(message.optimal_code_candidate1().begin(), message.optimal_code_candid
 currentBestCodeCost = (uint64_t)  message.cost();
 
 
-printf("(loaded) Best cost: %lu\n", currentBestCodeCost);
+printf("(loaded) Best cost: %llu\n", (long long unsigned int)  currentBestCodeCost);
 printf("(loaded) Vector 0: ");
 for(int i=0; i<currentBestCode0.size(); i++)
 {
@@ -103,7 +103,7 @@ currentBestCode0 = codeCandidate0;
 currentBestCode1 = codeCandidate1;
 currentBestCodeCost = overallMax;
 
-printf("Best cost: %lu\n", currentBestCodeCost);
+printf("Best cost: %llu\n", (long long unsigned int) currentBestCodeCost);
 printf("Vector 0: ");
 for(int i=0; i<currentBestCode0.size(); i++)
 {
