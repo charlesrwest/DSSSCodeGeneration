@@ -228,7 +228,7 @@ return fwrite(serializedMessage.c_str(), serializedMessage.size(), 1, checkpoint
 }
 
 /*
-This function returns the maximum value from a sequence when it is mis-aligned with itself.  It starts by having one sample of overlap in the front, then moves down until there is one sample of overlap in the end.
+This function returns the maximum value from a sequence when it is mis-aligned with itself.
 @param inputCodeSequence: The sequence to evaluate.
 @return: The max sum of a misaligned self sequence
 */
@@ -239,13 +239,10 @@ int maxSelfCost = 0;
 for(int i=1; i<inputCodeSequence.size(); i++) //Start at 1 to prevent perfect alignment
 {
 int sum = 0;
-//printf("Values: ");
-for(int ii=0; (i+ii) < inputCodeSequence.size(); ii++)
+for(int ii=0; ii < inputCodeSequence.size(); ii++)
 {
-//printf("(%d)%d ", i+ii, inputCodeSequence[i+ii]*inputCodeSequence[ii]);
-sum += inputCodeSequence[i+ii]*inputCodeSequence[ii];
+sum += inputCodeSequence[(i+ii) % inputCodeSequence.size()]*inputCodeSequence[ii];
 }
-//printf("\n");
 
 if(maxSelfCost < sum)
 {
@@ -257,7 +254,7 @@ return maxSelfCost;
 }
 
 /*
-This function returns the maximum value from one sequence when it colliding with the another.  It starts by having one sample of overlap in the front, then moves down until there is one sample of overlap in the end.
+This function returns the maximum value from one sequence when it colliding with the another (cyclical collisions).  
 @param inputCodeSequence0: The first sequence to evaluate.
 @param inputCodeSequence1: The second sequence to evaluate
 @return: The max sum of one of the sequences colliding with the other sequence
@@ -268,23 +265,9 @@ int maxCrossCost = 0;
 for(int i=0; i<inputCodeSequence0.size(); i++)
 {
 int sum = 0;
-for(int ii=0; (i+ii) < inputCodeSequence1.size(); ii++)
+for(int ii=0; ii < inputCodeSequence1.size(); ii++)
 {
-sum += inputCodeSequence1[i+ii]*inputCodeSequence0[ii];
-}
-
-if(maxCrossCost < sum)
-{
-maxCrossCost = sum;
-}
-}
-
-for(int i=0; i<inputCodeSequence1.size(); i++) 
-{
-int sum = 0;
-for(int ii=0; (i+ii) < inputCodeSequence0.size(); ii++)
-{
-sum += inputCodeSequence0[i+ii]*inputCodeSequence1[ii];
+sum += inputCodeSequence1[(i+ii)%inputCodeSequence1.size()]*inputCodeSequence0[ii];
 }
 
 if(maxCrossCost < sum)

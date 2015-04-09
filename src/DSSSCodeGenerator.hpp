@@ -71,14 +71,14 @@ This function attempts to write a DSSSCodeGeneratorMessage to the given file.
 bool writeCheckpoint(const std::string &inputFilePath, const DSSSCodeGeneratorMessage &inputMessage);
 
 /*
-This function returns the maximum value from a sequence when it is mis-aligned with itself.  It starts by having one sample of overlap in the front, then moves down until there is one sample of overlap in the end.
+This function returns the maximum value from a sequence when it is mis-aligned with itself.
 @param inputCodeSequence: The sequence to evaluate.
 @return: The max sum of a misaligned self sequence
 */
 uint64_t getSequenceSelfCost(const std::vector<int32_t> &inputCodeSequence);
 
 /*
-This function returns the maximum value from one sequence when it colliding with the another.  It starts by having one sample of overlap in the front, then moves down until there is one sample of overlap in the end.
+This function returns the maximum value from one sequence when it colliding with the another (cyclical collisions).  
 @param inputCodeSequence0: The first sequence to evaluate.
 @param inputCodeSequence1: The second sequence to evaluate
 @return: The max sum of one of the sequences colliding with the other sequence
