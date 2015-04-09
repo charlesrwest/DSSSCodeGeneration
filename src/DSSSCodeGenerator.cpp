@@ -27,7 +27,7 @@ checkpointPath = std::string("checkpoint") + std::to_string(inputSequenceLength)
 //Initialize vectors to be legal codes (-1, 1)
 for(int i=0; i<inputSequenceLength; i++)
 {
-currentBestCode0.push_back((i % 2)*2 -1 ); //Alternating -1,1s
+currentBestCode0.push_back((i % 2) ); //Alternating 1,0s
 }
 currentBestCode1 = currentBestCode0;
 codeCandidate0 = currentBestCode0;
